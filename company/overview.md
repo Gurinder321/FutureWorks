@@ -1,21 +1,21 @@
-# Client Overview — {{CLIENT_NAME}}
+# Client Overview — Future Works
 
 ## Identity
 
-**Company name:** {{CLIENT_NAME}}
-**Website:** {{WEBSITE}}
-**Industry:** {{INDUSTRY}}
+**Company name:** Future Works
+**Website:** https://future.works
+**Industry:** AI transformation (outcome-based, 12-week cycles)
 **Founded:** {{YEAR}}
 **Size:** {{EMPLOYEE_COUNT}} employees
-**Location / HQ:** {{LOCATION}}
+**Location / HQ:** San Francisco, New York, Calgary, London
 
 ## What They Do
 
-{{2-3 sentence description of what the client does, who they serve, and how they are different from competitors}}
+Future Works is the AI-native transformation engine. It rebuilds core operations for large and mid-market companies in twelve-week cycles, run by named senior experts orchestrating fleets of AI agents, with a third of every fee staked on value the client's Finance team validates. Competes with incumbent systems integrators that bill time and materials.
 
 ## Why They Hired Instantly.ai
 
-{{What problem brought them here. What they were doing before. What they want to achieve from outbound.}}
+Gurinder is a vendor running outbound for Future Works (not Instantly.ai). Goal: 5 held meetings per week. Phase 1 sends use Future Works's own warmed mailboxes for about a week, then move to Gurinder's 100 mailboxes once warm.
 
 ## Key Contacts
 

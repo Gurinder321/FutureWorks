@@ -60,6 +60,19 @@ Tracks what tooling is configured for this client. Affects which signals can be 
 
 ## Infrastructure
 
+**Seeded 2026-10-29 from Gurinder.** Phase 1 sends use Future Works's own mailboxes. Gurinder's mailboxes are still warming and take over after.
+
+| Set | Provider | Mailboxes | Per domain | Warm status |
+|-----|----------|-----------|-----------|-------------|
+| Future Works (client) | Google | **58 listed** (client said 50) | 14 domains, 2-5 each (not a flat 4) | Warmed for months, ready to send |
+| Gurinder (agency) | Google `{{TO CONFIRM}}` | 100 | 2 (~50 domains) | Warming, ~7 days left (as of 2026-10-29) |
+
+**Target:** 5 held meetings per week. Plan for 3,000-5,000 sends per week (about 12-20 per mailbox per day on the 50 warmed mailboxes).
+
+**Client inbox list:** `raw/fw-sending-inboxes.txt` (58 addresses, 14 domains: 5x nowfutureworks.xyz, getfutureworks.company, getfutureworks.click, futureworks.one, explorefutureworks.xyz; 4x thefutureworks.xyz, myfutureworks.xyz, joinfutureworks.xyz, joinfutureworks.click, gofutureworks.xyz, getfutureworks.one, atfutureworks.xyz; 3x tryfutureworks.one; 2x futureworksemail.com). Sender names: chris (14), matt.l (14), matt (13), michael (11), michael.wadden (6). These are the client's mailboxes, used for about 1 week until Gurinder's 100 are warm.
+
+**Open:** which of the 58 are actually warm, their sender-name personas, and tracking domain setup, Instantly workspace URL and ID, MCP connection.
+
 | Resource | Detail | Status |
 |----------|--------|--------|
 | Sending domains | {{List domains}} | Active / Warming |

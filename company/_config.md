@@ -1,4 +1,4 @@
-# Client Config — {{CLIENT_NAME}}
+# Client Config — Future Works
 
 Central source of truth for variables used across this OS. Other files reference this file rather than hardcoding values.
 
@@ -10,12 +10,12 @@ Central source of truth for variables used across this OS. Other files reference
 
 | Key | Value |
 |-----|-------|
-| `client_name` | {{CLIENT_NAME}} |
-| `industry` | {{INDUSTRY}} |
-| `website` | {{WEBSITE}} |
-| `geography` | {{GEOGRAPHY}} |
-| `primary_contact_name` | {{NAME}} |
-| `primary_contact_email` | {{EMAIL}} |
+| `client_name` | Future Works |
+| `industry` | AI transformation (outcome-based) |
+| `website` | https://future.works |
+| `geography` | US primary, Canada full |
+| `primary_contact_name` | Matt (CEO); Michael Wadden (sales) |
+| `primary_contact_email` | {{TO CONFIRM}} |
 | `service_type` | {{DFY / DWY / Custom}} |
 | `start_date` | {{YYYY-MM-DD}} |
 | `reporting_day` | {{Monday / Friday / etc.}} |

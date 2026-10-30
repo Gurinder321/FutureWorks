@@ -1,11 +1,11 @@
-# CLAUDE.md — {{CLIENT_NAME}} | GTM Client OS
+# CLAUDE.md — Future Works | GTM Client OS
 
 ## What This Is
 
-This is the GTM Client OS for **{{CLIENT_NAME}}**. It gives Claude full context to manage this account: who the client is, their ICP, offer, voice, signal strategy, live campaign state, communication history, and decision rationale.
+This is the GTM Client OS for **Future Works**. It gives Claude full context to manage this account: who the client is, their ICP, offer, voice, signal strategy, live campaign state, communication history, and decision rationale.
 
-**Managed by:** Harry Rawles — GTM Engineer at Instantly.ai
-**Client:** {{CLIENT_NAME}}
+**Managed by:** Gurinder (GTM vendor to Future Works). Template by Harry Rawles.
+**Client:** Future Works
 **Template version:** see `VERSION` and `CHANGELOG.md`
 **Central config:** `company/_config.md`
 
@@ -38,7 +38,6 @@ This is the auto-improvement mechanism. The OS gets faster and more tailored to 
 
 **Every skill writes its own session-log row.** Pattern-detector runs first and writes the first row, then hands off. Every skill invoked after pattern-detector MUST also write a row at its STEP 0 (per `wiki/_skill-context.md` "Session-Log Write" mandate, enforced by a STEP 0 block in every skill file). Without per-skill rows, the log is sparse and pattern-detection breaks. If a chain invokes 5 sub-skills, the log gets 6 rows (chain + 5 sub-skills).
 
-**What "forge it" means:** when pattern-detector surfaces a detection, reply "forge it" to invoke `gtm-skills/skill-forge.md`. Skill-forge drafts a new skill from the pattern, saves it with a `forged-` prefix (e.g. `forged-quick-diagnose.md` — illustrative example, file does not exist in template), and surfaces it for your review. You promote it later by renaming (drop the prefix) and adding to the routing table.
 
 **What "skip this" means:** reply "skip this" to add the pattern's signature to `Rejected pattern suggestions`. The detector will never re-suggest it.
 
@@ -72,25 +71,14 @@ This is the auto-improvement mechanism. The OS gets faster and more tailored to 
 
 ## Skill Routing Table
 
-### Multi-skill chains (recommended entry points for common workflows)
-
-| User intent | Chain | What it does |
-|-------------|-------|--------------|
-| "Build a campaign" / "Build [client] [signal] campaign" | gtm-skills/chain-build-campaign.md | Smart-routes through icp-builder, list-builder, signal-sourcer, personalization-strategist, cold-email-writer, pre-launch-check, campaign-launcher. Skips skills not needed for the context. |
-| "Diagnose [campaign]" / "Why is [campaign] underperforming" | gtm-skills/chain-diagnose-campaign.md | Runs campaign-optimiser, then routes to the right specialist (deliverability-doctor / list-builder / signal-sourcer / cold-email-writer). Optionally queues a corrective test. |
-| "Friday review for [client]" / "Full weekly review" | gtm-skills/chain-weekly-review-full.md | End-to-end Friday loop: client-health-scorer → weekly-reviewer (full 8 steps) → conditional test launches → client-report-writer. The single command for the most important recurring activity. |
-
 ### Setup and operating rhythm
 
 | User intent | Skill | When |
 |-------------|-------|------|
-| (automatic — every session) | gtm-skills/pattern-detector.md | **Runs FIRST every session.** Detects repeating prompts, surfaces skill-forge proposals. |
-| "forge it" / "Create a skill that automates {{X}}" | gtm-skills/skill-forge.md | Auto-creates a new skill from a detected pattern. Triggered by pattern-detector or directly. |
+| (automatic: every session) | gtm-skills/pattern-detector.md | **Runs FIRST every session.** Logs invocations to session-log |
 | "Onboard new client" / "Set up the OS" | gtm-skills/client-onboarder.md | First time on a fresh clone |
-| "Run weekly review" / "Friday review" | gtm-skills/weekly-reviewer.md | The deep-review skill (called by chain-weekly-review-full). For the full Friday flow, use the chain instead. |
-| "Score health" / "Portfolio health" | gtm-skills/client-health-scorer.md | Mondays + at risk-flag (called by chain-weekly-review-full) |
-| "Run pre-launch check" | gtm-skills/pre-launch-check.md | Before any campaign goes live (called by chain-build-campaign) |
-| "Run test-readiness check on T-XXX" | gtm-skills/test-readiness-check.md | Pre-test gate (called by chain-build-campaign + chain-diagnose-campaign + chain-weekly-review-full) |
+| "Run weekly review" / "Friday review" | gtm-skills/weekly-reviewer.md | Weekly review loop |
+| "Run pre-launch check" | gtm-skills/pre-launch-check.md | Before any campaign goes live |
 
 ### Copy and campaigns
 
@@ -100,16 +88,13 @@ This is the auto-improvement mechanism. The OS gets faster and more tailored to 
 | "Launch the campaign" | gtm-skills/campaign-launcher.md | Pre-flight before going live |
 | "Diagnose campaign" / "Why is PRR low" | gtm-skills/campaign-optimiser.md | Performance issue |
 | "Analyse campaign data" | gtm-skills/campaign-analyst.md | Performance review |
-| "Launch the next test" | gtm-skills/test-launcher.md | When testing roadmap has queued tests |
 
 ### Strategy and sourcing
 
 | User intent | Skill | When |
 |-------------|-------|------|
-| "Design signal strategy" | gtm-skills/signal-sourcer.md | New client, or signal saturation |
 | "Personalise at scale" | gtm-skills/personalization-strategist.md | High-tier prospect campaigns |
 | "Build / qualify lead list" | gtm-skills/list-builder.md | New list or list quality issue |
-| "Build or refine ICP" | gtm-skills/icp-builder.md | New client, or ICP drift |
 
 ### Operations and crises
 
@@ -117,7 +102,6 @@ This is the auto-improvement mechanism. The OS gets faster and more tailored to 
 |-------------|-------|------|
 | "Handle this reply" | gtm-skills/reply-handler.md | Any inbound reply |
 | "Handle client request" | gtm-skills/client-request-handler.md | Mid-week client ask |
-| "Inbound signal: [X]" / "RB2B picked up [company]" / "[company] raised funding" / "Champion moved to [company]" | gtm-skills/inbound-activator.md | Inbound signal → outbound activation within SLA (distinct from reply-handler which handles inbound REPLIES after outreach) |
 | "Diagnose deliverability" | gtm-skills/deliverability-doctor.md | Bounces, spam, blacklists |
 | "Incident" / "Domain blacklisted" / "Bounce spike" | gtm-skills/incident-responder.md | Critical/high severity issue |
 
@@ -125,15 +109,7 @@ This is the auto-improvement mechanism. The OS gets faster and more tailored to 
 
 | Skill | Invoked by |
 |-------|-----------|
-| gtm-skills/fresh-eyes-reviewer.md | Pass 2 review for cold-email-writer and chain-build-campaign — sub-agent that critiques copy with fresh context |
-
-### Reporting and relationship
-
-| User intent | Skill | When |
-|-------------|-------|------|
-| "Write the weekly report" | gtm-skills/client-report-writer.md | Friday (chained from weekly-reviewer) |
-| "Generate QBR for {{client}}" | gtm-skills/qbr-writer.md | Last week of each quarter |
-| "Offboard {{client}}" | gtm-skills/client-offboarder.md | End of engagement |
+| gtm-skills/fresh-eyes-reviewer.md | Pass 2 review for cold-email-writer |
 
 ---
 
@@ -189,10 +165,6 @@ client-os/
 │
 ├── gtm-skills/            # AI skill definitions (frontmatter + content)
 │   ├── pattern-detector.md         # RUNS FIRST EVERY SESSION — auto-improvement loop
-│   ├── skill-forge.md              # Auto-creates skills from detected patterns
-│   ├── chain-build-campaign.md     # End-to-end campaign build chain
-│   ├── chain-diagnose-campaign.md  # End-to-end diagnostic chain
-│   ├── chain-weekly-review-full.md # End-to-end Friday review chain
 │   ├── client-onboarder.md         # RUN FIRST on a fresh clone
 │   ├── weekly-reviewer.md          # RUN EVERY FRIDAY — compounding loop
 │   ├── pre-launch-check.md         # Gate for placeholder validation
@@ -200,21 +172,12 @@ client-os/
 │   ├── campaign-launcher.md
 │   ├── campaign-optimiser.md
 │   ├── reply-handler.md
-│   ├── inbound-activator.md        # Inbound signal → outbound activation within SLA
 │   ├── client-request-handler.md
-│   ├── test-launcher.md
-│   ├── test-readiness-check.md     # Pre-test gate
-│   ├── client-health-scorer.md
-│   ├── client-report-writer.md
-│   ├── client-offboarder.md
-│   ├── qbr-writer.md
 │   ├── incident-responder.md
-│   ├── signal-sourcer.md
 │   ├── personalization-strategist.md
 │   ├── list-builder.md
 │   ├── deliverability-doctor.md
 │   ├── campaign-analyst.md
-│   ├── icp-builder.md
 │   └── fresh-eyes-reviewer.md      # Helper sub-agent (invoked by other skills)
 │
 ├── examples/              # Reference examples

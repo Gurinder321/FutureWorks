@@ -24,7 +24,7 @@ Format rules:
 
 | Timestamp | Prompt summary | Skill invoked | Output / outcome |
 |-----------|---------------|---------------|------------------|
-| | | | |
+| 2026-10-29 | Onboard Future Works: ICP, voice, infra from brain dump | client-onboarder | Wrote icp.md, voice.md header, campaign-state infra. Offer, overview pending |
 
 ---
 
